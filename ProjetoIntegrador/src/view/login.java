@@ -133,16 +133,20 @@ public class login extends javax.swing.JFrame {
         String login = textUsuario.getText();
         String senha = textSenha.getText();
         
-        if( ! login.equals("admin") || ! senha.equals("1234")){
+        if(login.equals("admin") && senha.equals("1234")){
+            cadastro cad = new cadastro();
+            cad.setVisible(true);
+            this.setVisible(false);
+        }else if(login.equals("gerente") && senha.equals("1234")){
+            cadastroFornecedor cadFornecedor = new cadastroFornecedor();
+            cadFornecedor.setVisible(true);
+            this.setVisible(false);
+        }else{
             JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos", "Erro de Operação",
                                 JOptionPane.WARNING_MESSAGE);
-            
             this.textUsuario.grabFocus();
             return;
         }
-        cadastro cad = new cadastro();
-        cad.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_btnLoginMouseClicked
 
     /**

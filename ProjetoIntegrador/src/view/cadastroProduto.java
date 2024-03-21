@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTMLEditorKit;
+
 /**
  *
  * @author lais.salmeida6
@@ -42,7 +45,7 @@ public class cadastroProduto extends javax.swing.JFrame {
         preco = new javax.swing.JSpinner();
         quantidade = new javax.swing.JSpinner();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        tableProduto = new javax.swing.JTable();
         menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -82,6 +85,11 @@ public class cadastroProduto extends javax.swing.JFrame {
         jLabel3.setText("Nome do Produto");
 
         cadastrar.setText("Cadastrar");
+        cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarMouseClicked(evt);
+            }
+        });
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
@@ -121,7 +129,7 @@ public class cadastroProduto extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Preço");
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -140,7 +148,7 @@ public class cadastroProduto extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tabela);
+        jScrollPane2.setViewportView(tableProduto);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -250,6 +258,16 @@ public class cadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeProdutoActionPerformed
 
+    private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
+        // TODO add your handling code here:
+        int qtd;
+        double preco1;
+        //**preco1 = Double.parseDouble(preco.getText());
+        DefaultTableModel MdlTableProduto = (DefaultTableModel) tableProduto.getModel();
+        //Object [] linhas = {nomeProduto.getText(), this.descricao.getText(), this.quantidade.getText(), this.preco.getText()};
+        //MdlTableProduto.addRow(linhas);
+    }//GEN-LAST:event_cadastrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -306,6 +324,6 @@ public class cadastroProduto extends javax.swing.JFrame {
     private javax.swing.JTextField nomeProduto;
     private javax.swing.JSpinner preco;
     private javax.swing.JSpinner quantidade;
-    private javax.swing.JTable tabela;
+    private javax.swing.JTable tableProduto;
     // End of variables declaration//GEN-END:variables
 }

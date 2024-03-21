@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lais.salmeida6
@@ -37,7 +39,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         categoria = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableFornecedor = new javax.swing.JTable();
         cep = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         produto = new javax.swing.JTextField();
@@ -69,6 +71,11 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel3.setText("Nome do Fornecedor");
 
         cadastrar.setText("Cadastrar");
+        cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarMouseClicked(evt);
+            }
+        });
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
@@ -103,7 +110,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("CEP");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableFornecedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -111,18 +118,18 @@ public class cadastroFornecedor extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Descrição", "Categoria", "Quantidade", "Preço"
+                "Nome", "Número", "CEP", "Categoria", "ID Usuário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableFornecedor);
 
         cep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +276,13 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idUsuarioActionPerformed
 
+    private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel MdlTableFornecedor  = (DefaultTableModel) tableFornecedor.getModel();
+        Object [] linhas = {nomeFornecedor.getText(), this.nomeFornecedor.getText(), this.cep.getText(), this.categoria.getSelectedIndex(), this.idUsuario.getText()};
+        MdlTableFornecedor.addRow(linhas);
+    }//GEN-LAST:event_cadastrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -321,10 +335,10 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JMenuBar menu;
     private javax.swing.JTextField nomeFornecedor;
     private javax.swing.JTextField numeroFornecedor;
     private javax.swing.JTextField produto;
+    private javax.swing.JTable tableFornecedor;
     // End of variables declaration//GEN-END:variables
 }
