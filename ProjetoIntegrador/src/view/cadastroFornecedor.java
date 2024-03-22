@@ -35,8 +35,6 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         cadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         numeroFornecedor = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        categoria = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableFornecedor = new javax.swing.JTable();
@@ -51,6 +49,11 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(450, 700));
@@ -90,18 +93,6 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         numeroFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroFornecedorActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Categoria");
-
-        categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        categoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaActionPerformed(evt);
             }
         });
 
@@ -169,10 +160,9 @@ public class cadastroFornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel8)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel9)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -180,7 +170,6 @@ public class cadastroFornecedor extends javax.swing.JFrame {
                             .addComponent(numeroFornecedor, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cep, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(produto, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(categoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(idUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))))
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -207,18 +196,14 @@ public class cadastroFornecedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(4, 4, 4)
-                .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(idUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cadastrar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(90, 90, 90))
         );
 
         jMenu1.setText("Cadastrar Usuário");
@@ -236,13 +221,11 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, Short.MAX_VALUE)
         );
 
         pack();
@@ -255,10 +238,6 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private void cepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cepActionPerformed
-
-    private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoriaActionPerformed
 
     private void numeroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFornecedorActionPerformed
         // TODO add your handling code here:
@@ -279,9 +258,13 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
         // TODO add your handling code here:
         DefaultTableModel MdlTableFornecedor  = (DefaultTableModel) tableFornecedor.getModel();
-        Object [] linhas = {nomeFornecedor.getText(), this.nomeFornecedor.getText(), this.cep.getText(), this.categoria.getSelectedIndex(), this.idUsuario.getText()};
+        Object [] linhas = {nomeFornecedor.getText(), this.nomeFornecedor.getText(), this.cep.getText(), this.idUsuario.getText()};
         MdlTableFornecedor.addRow(linhas);
     }//GEN-LAST:event_cadastrarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -320,13 +303,11 @@ public class cadastroFornecedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
-    private javax.swing.JComboBox<String> categoria;
     private javax.swing.JTextField cep;
     private javax.swing.JTextField idUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
