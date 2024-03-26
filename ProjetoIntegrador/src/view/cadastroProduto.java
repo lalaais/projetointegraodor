@@ -48,9 +48,8 @@ public class cadastroProduto extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProduto = new javax.swing.JTable();
         menu = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
+        menuFornecedor = new javax.swing.JMenu();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,14 +212,21 @@ public class cadastroProduto extends javax.swing.JFrame {
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Cadastrar Usuário");
-        menu.add(jMenu1);
+        menuUsuario.setText("Cadastrar Usuário");
+        menuUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuUsuarioMouseClicked(evt);
+            }
+        });
+        menu.add(menuUsuario);
 
-        jMenu2.setText("Cadastrar Fornecedor");
-        menu.add(jMenu2);
-
-        jMenu3.setText("Cadastrar Produto");
-        menu.add(jMenu3);
+        menuFornecedor.setText("Cadastrar Fornecedor");
+        menuFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuFornecedorMouseClicked(evt);
+            }
+        });
+        menu.add(menuFornecedor);
 
         setJMenuBar(menu);
 
@@ -279,6 +285,20 @@ public class cadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
+    private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked
+        // TODO add your handling code here:
+        cadastro cadUsuario = new cadastro();
+        cadUsuario.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_menuUsuarioMouseClicked
+
+    private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
+        // TODO add your handling code here:
+        cadastroFornecedor cadFornecedor = new cadastroFornecedor();
+        cadFornecedor.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_menuFornecedorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -324,14 +344,13 @@ public class cadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuFornecedor;
+    private javax.swing.JMenu menuUsuario;
     private javax.swing.JTextField nomeProduto;
     private javax.swing.JSpinner preco;
     private javax.swing.JSpinner quantidade;
