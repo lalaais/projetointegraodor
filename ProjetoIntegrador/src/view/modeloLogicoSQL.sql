@@ -2,7 +2,7 @@ create table TB_USUARIO(
     ID_USUARIO      int primary key auto_increment,
     USUARIO         varchar(300),
     SENHA           varchar(300),
-    FUNCAO          varchar(300)
+    FUNCAO          varchar(300))
 );
 
 create table TB_PRODUTO(
@@ -11,8 +11,8 @@ create table TB_PRODUTO(
     PRODUTO         varchar(300),
     PRECO           decimal(15,2),
     QTD             int,
-    DESCRICAO       varchar(300),
-    foreign key (ID_USUARIO) references TB_USUARIO(ID_USUARIO),
+    DESCRICAO       varchar(300)),
+  foreign key (ID_USUARIO) references TB_USUARIO(ID_USUARIO),
     foreign key (ID_FORNECEDOR) references TB_FORNECEDOR(ID_FORNECEDOR)
 );
 
