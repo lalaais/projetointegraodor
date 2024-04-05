@@ -4,8 +4,15 @@
  */
 package view;
 //teste
+
 import controller.UsuarioDao;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLDataException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,11 +57,14 @@ public class login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Login");
 
+        textUsuario.setName("textUsuario"); // NOI18N
         textUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUsuarioActionPerformed(evt);
             }
         });
+
+        textSenha.setName("textSenha"); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -91,7 +101,7 @@ public class login extends javax.swing.JFrame {
                     .addComponent(textUsuario)
                     .addComponent(textSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,9 +125,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,33 +140,50 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_textUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
-        String login = textUsuario.getText();
-        String senha = textSenha.getText();
-        
-        if(login.equals("admin") && senha.equals("1234")){
-            cadastro cad = new cadastro();
-            cad.setVisible(true);
+
+        String login, senha;
+        login = this.textUsuario.getText();
+        senha = this.textSenha.getText();
+
+        if (login.equals("admin") && senha.equals("1234")) {
+            cadastro objCli = new cadastro();
+            objCli.setVisible(true);
             this.setVisible(false);
-        }else if(login.equals("gerente") && senha.equals("1234")){
-            cadastroFornecedor cadFornecedor = new cadastroFornecedor();
-            cadFornecedor.setVisible(true);
-            this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos", "Erro de Operação",
-                                JOptionPane.WARNING_MESSAGE);
-            this.textUsuario.grabFocus();
-            return;
+        } else {
+
+            UsuarioDao u1 = new UsuarioDao();
+            ResultSet resul = u1.validarLogin(login, senha);
+
+            try {
+
+                if (resul.next()) {
+
+                    cadastroProduto objCli = new cadastroProduto();
+                    objCli.setVisible(true);
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Ususário ou Senha Inválidos!", "Usuário ou Senha Inválidos!",
+                            JOptionPane.WARNING_MESSAGE);
+
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
+
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        UsuarioDao u = new UsuarioDao();
-    u.criarBanco(); // cria todas as tabelas   // TODO add your handling code here:
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
