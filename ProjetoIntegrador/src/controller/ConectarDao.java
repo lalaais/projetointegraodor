@@ -5,6 +5,7 @@ import java.sql.SQLException; // Tratamento de Erros SQL
 import java.sql.Connection; // Armazena a Conexão Aberta
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ConectarDao {
     public  Connection mycon = null;
@@ -69,6 +70,12 @@ public class ConectarDao {
                 JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Fornecedor!\n" + err.getMessage());
             }
     }
+    
+    
+    
+    
+    
+    
 }
 
 

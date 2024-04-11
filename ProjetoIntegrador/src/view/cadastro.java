@@ -1,7 +1,12 @@
 package view;
 
+import controller.UsuarioDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.usuario;
 public class cadastro extends javax.swing.JFrame {
     
     public cadastro() {
@@ -112,7 +117,7 @@ public class cadastro extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableUsuario);
 
-        btnExcluir.setText("Exluir");
+        btnExcluir.setText("Excluir");
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExcluirMouseClicked(evt);
@@ -245,9 +250,20 @@ public class cadastro extends javax.swing.JFrame {
 
         // TODO add your handling code here:
          DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCargo.getModel();
-        DefaultTableModel MdlTableUsuario = (DefaultTableModel) tableUsuario.getModel();
-        Object [] linhas = { textLogin.getText(), combo.getSelectedItem().toString() };
+        DefaultTableModel MdlTableUsuario = (DefaultTableModel) this.tableUsuario.getModel();
+        Object [] linhas = { textLogin.getText(), combo.getSelectedItem().toString(), textSenha.getText()};
         MdlTableUsuario.addRow(linhas);
+        
+        usuario Gu = new usuario ();
+        
+        Gu.setUsuario(this.textLogin.getText());
+        Gu.setFuncao(this.cmbCargo.getSelectedItem().toString());
+        Gu.setSenha (this.textSenha.getText());
+        
+        UsuarioDao ud = new UsuarioDao();
+        ud.incluir(Gu);
+        
+        
         
         
     }//GEN-LAST:event_btnIncluirMouseClicked
@@ -258,6 +274,8 @@ public class cadastro extends javax.swing.JFrame {
                  meucombo.removeAllElements();
                  meucombo.addElement("Gerente");
                  meucombo.addElement("Funcionário");
+                 
+                 this.carregar_usuarios(); 
           
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
@@ -278,6 +296,12 @@ public class cadastro extends javax.swing.JFrame {
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
+        //private void btnexcluirMouseClicked(java.awt.event.MouseEvent evt) {
+        UsuarioDao u = new UsuarioDao();
+        u.excluir ( textLogin.getText() );
+        this.carregar_usuarios();
+        //}
+
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -299,6 +323,31 @@ public class cadastro extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_menuSairMouseClicked
 
+    
+    
+    private void carregar_usuarios (){
+    UsuarioDao u1 = new UsuarioDao();
+    // apagar todas as linhas do Jtable
+    while (tableUsuario.getModel().getRowCount() > 0) {
+    ( (DefaultTableModel) tableUsuario.getModel() ).removeRow(0);
+    }
+    try {
+    ResultSet todos = u1.buscartodos();
+    DefaultTableModel tab = (DefaultTableModel) this.tableUsuario.getModel();
+    while (todos.next()) {
+    Object[] linha = {todos.getString("usuário"), todos.getString("função")};
+    
+    tab.addRow(linha);
+    }
+    todos.close();
+    } catch (SQLException err) {
+    JOptionPane.showMessageDialog(null, err.getMessage());
+    }
+    }
+    
+    
+    
+    
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
