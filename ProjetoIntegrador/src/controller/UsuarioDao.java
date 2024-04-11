@@ -15,7 +15,7 @@ public class UsuarioDao extends ConectarDao {
     }
     
     public void incluir(usuario obj) { 
-            sql = "INSERT INTO USUARIO (?,?,?)";
+        sql = "INSERT INTO USUARIO (?,?,?)";
         try {
             ps = mycon.prepareStatement(sql);
             ps.setString(1,obj.getUsuario());
@@ -29,12 +29,11 @@ public class UsuarioDao extends ConectarDao {
         }
     }
     
-    public ResultSet validarLogin (String login, String senha)   {
-        
-     sql = "SELECT * FROM USUARIO WHERE ucase(usuario) = ucase('"+login+"') "
-            + "and senha = ucase('"+ senha +"')";
+    public ResultSet validarLogin (String login, String senha)   { 
+        sql = "SELECT * FROM USUARIO WHERE ucase(usuario) = ucase('"+login+"') "
+              + "and senha = ucase('"+ senha +"')";
    
-    try {
+        try {
             ps = mycon.prepareStatement(sql);
             return ps.executeQuery();
             
@@ -43,7 +42,6 @@ public class UsuarioDao extends ConectarDao {
             return null; 
         }
     }
-
 
 }
 
