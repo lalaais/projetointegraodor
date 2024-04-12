@@ -15,12 +15,12 @@ public class UsuarioDao extends ConectarDao {
     }
     
     public void incluir(usuario obj) { 
-        sql = "INSERT INTO USUARIO (?,?,?)";
+        sql = "INSERT INTO USUARIO VALUES ( ?, ?, ?)";
         try {
             ps = mycon.prepareStatement(sql);
             ps.setString(1,obj.getUsuario());
-            ps.setString(2,obj.getSenha());
-            ps.setString(3,obj.getFuncao());
+            ps.setString(2,obj.getFuncao());
+            ps.setString(3,obj.getSenha());
             ps.execute();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Incluído com Sucesso!");

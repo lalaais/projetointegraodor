@@ -249,7 +249,7 @@ public class cadastro extends javax.swing.JFrame {
     private void btnIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIncluirMouseClicked
 
         // TODO add your handling code here:
-         DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCargo.getModel();
+        DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCargo.getModel();
         DefaultTableModel MdlTableUsuario = (DefaultTableModel) this.tableUsuario.getModel();
         Object [] linhas = { textLogin.getText(), combo.getSelectedItem().toString(), textSenha.getText()};
         MdlTableUsuario.addRow(linhas);
