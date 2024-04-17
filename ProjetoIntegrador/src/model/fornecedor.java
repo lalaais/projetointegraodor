@@ -3,7 +3,8 @@ package model;
 public class fornecedor {
     public String nome;
     public String numero;
-    public String cep;
+    public String categoria;
+    public int idusuario;
 
     public String getNome() {
         return nome;
@@ -21,13 +22,21 @@ public class fornecedor {
         this.numero = numero;
     }
 
-    public String getCep() {
-        return cep;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
     
-    
+   
 }

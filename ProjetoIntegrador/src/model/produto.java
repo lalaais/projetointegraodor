@@ -2,12 +2,11 @@ package model;
 
 
 public class produto {
-
     public String nome;
     public String descricao;
-    public int quantidade;
+    public String categoria;
     public double preco;
-
+    
     public String getNome() {
         return nome;
     }
@@ -24,12 +23,12 @@ public class produto {
         this.descricao = descricao;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public double getPreco() {

@@ -18,8 +18,8 @@ public class UsuarioDao extends ConectarDao {
         sql = "INSERT INTO USUARIO VALUES ( ?, ?, ?)";
         try {
             ps = mycon.prepareStatement(sql);
-            ps.setString(1,obj.getUsuario());
-            ps.setString(2,obj.getFuncao());
+            ps.setString(1,obj.getNome());
+            ps.setString(2,obj.getNivel());
             ps.setString(3,obj.getSenha());
             ps.execute();
             ps.close();
