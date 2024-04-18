@@ -26,11 +26,24 @@ public class ConectarDao {
     }
     
     public void criarBanco() {
-            sql = "CREATE TABLE IF NOT EXISTS USUARIO ("
-                  + "ID_USUARIO       int primary key auto_increment,"
-                  + "USUARIO          varchar(300),"
-                  + "SENHA            varchar(300),"
-                  + "FUNCAO           varchar(300))";
+        sql = "CREATE TABLE IF NOT EXISTS NIVEL ("
+                  + "ID_NIVEL         int primary key,"
+                  + "DESNIVEL         varchar(300))";
+
+        try {
+               PreparedStatement ps = mycon.prepareStatement(sql);
+               ps.execute();
+               ps.close();
+            }catch (SQLException err) {
+                JOptionPane.showMessageDialog(null, "Erro ao criar a tabela nível!\n" + err.getMessage());
+            }
+        
+        sql = "CREATE TABLE IF NOT EXISTS USUARIO ("
+                  + "ID_CPF         varchar(14) primary key,"
+                  + "NOME           varchar(300),"
+                  + "SENHA          varchar(300),"
+                  + "EMAIL          varchar(300),"
+                  + "TELEFONE       varchar(14))";
 
             try {
                 PreparedStatement ps = mycon.prepareStatement(sql);
@@ -40,13 +53,25 @@ public class ConectarDao {
                 JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Usuário!\n" + err.getMessage());
             }
 
+        sql = "CREATE TABLE IF NOT EXISTS FORNECEDOR ("
+            +"ID_FORNECEDOR      int primary key auto_increment," 
+            +"NOME               varchar(300)," 
+            +"NUMERO             varchar(14))";
+
+        try {
+                PreparedStatement ps = mycon.prepareStatement(sql);
+                ps.execute();
+                ps.close();
+            } catch (SQLException err) {
+                JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Fornecedor!\n" + err.getMessage());
+            }
+
         sql = "CREATE TABLE IF NOT EXISTS PRODUTO ("
-            +"ID_PRODUTO      int primary key auto_increment," 
-            +"CATEGORIA       varchar(300)," 
-            +"PRODUTO         varchar(300)," 
-            +"PRECO           decimal(15,2)," 
-            +"QTD             int,"
-            +"DESCRICAO       varchar(300))";
+            +"ID_USUARIO      int primary key auto_increment,"
+            +"NOME            varchar(300),"
+            +"DESCRICAO       varchar(300),"
+            +"PRECO           varchar(300),"
+            +"CATEGORIA       varchar(300))";
 
         try {
                 PreparedStatement ps = mycon.prepareStatement(sql);
@@ -55,19 +80,31 @@ public class ConectarDao {
             } catch (SQLException err) {
                 JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Produto!\n" + err.getMessage());
             }
-
-        sql = "CREATE TABLE IF NOT EXISTS FORNECEDOR ("
-            +"ID_USUARIO      int primary key auto_increment,"
-            +"USUARIO         varchar(300),"
-            +"SENHA           varchar(300),"
-            +"FUNCAO          varchar(300))";
+        
+        sql = "CREATE TABLE IF NOT EXISTS ORCAMENTO ("
+            +"ID_ORCAMENTO      int primary key auto_increment,"
+            +"DATA              date,"
+            +"TOTAL             double(15,2))";
 
         try {
                 PreparedStatement ps = mycon.prepareStatement(sql);
                 ps.execute();
                 ps.close();
             } catch (SQLException err) {
-                JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Fornecedor!\n" + err.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Orçamento!\n" + err.getMessage());
+            }
+        
+        sql = "CREATE TABLE IF NOT EXISTS ITEM ("
+            +"ID_ITEM           int primary key auto_increment,"
+            +"DATA              date,"
+            +"TOTAL             double(15,2))";
+
+        try {
+                PreparedStatement ps = mycon.prepareStatement(sql);
+                ps.execute();
+                ps.close();
+            } catch (SQLException err) {
+                JOptionPane.showMessageDialog(null, "Erro ao criar a tabela Item!\n" + err.getMessage());
             }
     }
     
