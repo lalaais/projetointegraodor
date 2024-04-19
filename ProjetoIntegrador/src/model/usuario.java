@@ -5,6 +5,17 @@ public class usuario {
     public String senha;
     public String email;
     public String nivel;
+    public String CPF;
+    
+    
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
     
     public String getNome() {
         return nome;

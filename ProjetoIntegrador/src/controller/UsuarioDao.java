@@ -15,12 +15,14 @@ public class UsuarioDao extends ConectarDao {
     }
     
     public void incluir(usuario obj) { 
-        sql = "INSERT INTO USUARIO VALUES ( ?, ?, ?)";
+        sql = "INSERT INTO USUARIO VALUE ( ?, ?, ?, ?, ?)";
         try {
             ps = mycon.prepareStatement(sql);
-            ps.setString(1,obj.getNome());
-            ps.setString(2,obj.getNivel());
+            ps.setString(1, obj.getCPF());
+            ps.setString(2,obj.getNome());
             ps.setString(3,obj.getSenha());
+            ps.setString(4,obj.getEmail());
+            ps.setString(5,obj.getNivel());
             ps.execute();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Incluído com Sucesso!");
@@ -44,7 +46,7 @@ public class UsuarioDao extends ConectarDao {
     }
     
      public ResultSet buscartodos() {
-    sql = "SELECT * FROM USUARIO ORDER BY USUARIO " ;
+    sql = "SELECT * FROM USUARIO ORDER BY nome " ;
     try {
     ps = mycon.prepareStatement (sql);
     return ps.executeQuery();
@@ -58,7 +60,7 @@ public class UsuarioDao extends ConectarDao {
      
     public void excluir ( String usuario ) {
     // configura o comando sql de exclusão delete por cpf
-    sql = "DELETE FROM USUARIOS WHERE USUARIO = '" + usuario + "'";
+     sql = "DELETE FROM USUARIO WHERE nome = '" + usuario + "'";
     try { // envia o comando sql para dentro da conexão através de
     
     ps = mycon.prepareStatement (sql);
