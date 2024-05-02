@@ -110,13 +110,13 @@ public class cadastro extends javax.swing.JFrame {
 
         tableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Usuário", "Cargo"
+                "CPF", "Nome", "Nivel"
             }
         ));
         jScrollPane2.setViewportView(tableUsuario);
@@ -401,7 +401,7 @@ public class cadastro extends javax.swing.JFrame {
     ResultSet todos = u1.buscartodos();
     DefaultTableModel tab = (DefaultTableModel) this.tableUsuario.getModel();
     while (todos.next()) {
-    Object[] linha = {todos.getString("usuário"), todos.getString("função")};
+    Object[] linha = {todos.getString("usuario"), todos.getString("função")};
     
     tab.addRow(linha);
     }
