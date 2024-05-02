@@ -4,8 +4,17 @@ public class fornecedor {
     public String nome;
     public String numero;
     public String categoria;
-    public int idusuario;
+    public int idFornecedor;
 
+    public int getIdFornecedor() {
+        return idFornecedor;
+    }
+
+    public void setIdFornecedor(int idFornecedor) {
+        this.idFornecedor = idFornecedor;
+    }
+    
+    
     public String getNome() {
         return nome;
     }
@@ -29,14 +38,5 @@ public class fornecedor {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
-    public int getIdusuario() {
-        return idusuario;
-    }
-
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
-    }
     
-   
 }

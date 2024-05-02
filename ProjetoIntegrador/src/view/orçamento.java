@@ -120,7 +120,7 @@ public class orçamento extends javax.swing.JFrame {
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
         // TODO add your handling code here:
-        cadastroFornecedor cadFornecedor = new cadastroFornecedor();
+        CadastroFornecedor cadFornecedor = new CadastroFornecedor();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked
@@ -141,7 +141,7 @@ public class orçamento extends javax.swing.JFrame {
 
     private void menuFornecedor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedor1MouseClicked
         // TODO add your handling code here:
-        cadastroFornecedor cadFornecedor = new cadastroFornecedor();
+        CadastroFornecedor cadFornecedor = new CadastroFornecedor();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedor1MouseClicked

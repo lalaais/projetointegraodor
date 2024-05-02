@@ -32,7 +32,7 @@ public class UsuarioDao extends ConectarDao {
     }
     
     public ResultSet validarLogin (String login, String senha)   { 
-        sql = "SELECT * FROM USUARIO WHERE ucase(usuario) = ucase('"+login+"') "
+        sql = "SELECT * FROM USUARIO WHERE ucase(email) = ucase('"+login+"') "
               + "and senha = ucase('"+ senha +"')";
    
         try {

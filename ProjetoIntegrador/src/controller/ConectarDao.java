@@ -64,7 +64,8 @@ public class ConectarDao {
         sql = "CREATE TABLE IF NOT EXISTS FORNECEDOR ("
                 + "ID_FORNECEDOR      int primary key auto_increment,"
                 + "NOME               varchar(300),"
-                + "NUMERO             varchar(14))";
+                + "NUMERO             varchar(14),"
+                + "CATEGORIA           varchar(300))";
 
         try {
             ps = mycon.prepareStatement(sql);

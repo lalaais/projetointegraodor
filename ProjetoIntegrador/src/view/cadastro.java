@@ -339,7 +339,7 @@ public class cadastro extends javax.swing.JFrame {
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
         // TODO add your handling code here:
-        cadastroFornecedor cadFornecedor = new cadastroFornecedor();
+        CadastroFornecedor cadFornecedor = new CadastroFornecedor();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked
