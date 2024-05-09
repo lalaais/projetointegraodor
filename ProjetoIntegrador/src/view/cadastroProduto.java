@@ -1,5 +1,10 @@
 package view;
 
+import controller.ProdutoDao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import model.produto;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLEditorKit;
@@ -279,6 +284,16 @@ public class cadastroProduto extends javax.swing.JFrame {
         DefaultTableModel MdlTableProduto = (DefaultTableModel) tableProduto.getModel();
         Object [] linhas = { this.nomeProduto.getText(), this.descricaoProduto.getText(),  this.precoProduto.getValue().toString()};
         MdlTableProduto.addRow(linhas);
+        
+        produto Pro = new produto ();
+        
+        Pro.setNome(this.nomeProduto.getText());
+        Pro.setDescricao(this.descricaoProduto.getText());
+        Pro.setCategoria(this.cmbCategoria.getSelectedItem().toString());
+        Pro.setPreco(this.precoProduto.getHeight());
+       
+        ProdutoDao pd = new ProdutoDao();
+        pd.cadastrar(Pro);
     }//GEN-LAST:event_cadastrarMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -303,7 +318,7 @@ public class cadastroProduto extends javax.swing.JFrame {
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
         // TODO add your handling code here:
-        CadastroFornecedor cadFornecedor = new CadastroFornecedor();
+        fornecedorCadastro cadFornecedor = new fornecedorCadastro();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked
@@ -318,6 +333,9 @@ public class cadastroProduto extends javax.swing.JFrame {
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
+        ProdutoDao p = new ProdutoDao();
+        p.excluir (nomeProduto.getText());
+        this.cadastrar_produtos();
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -331,6 +349,24 @@ public class cadastroProduto extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_menuSairMouseClicked
 
+    private void cadastrar_produtos() {
+        ProdutoDao ps = new ProdutoDao();
+        
+        while (tableProduto.getModel().getRowCount() > 0) {
+          ((DefaultTableModel) tableProduto.getModel()).removeRow(0);
+        } try {
+            ResultSet todos = ps.buscartodos();
+            DefaultTableModel tab = (DefaultTableModel) this.tableProduto.getModel();
+            while (todos.next()) {
+                Object[] linha = {todos.getString("cpf"), todos.getString("nome"), todos.getString("nivel")};
+                
+                tab.addRow(linha);
+            }
+            todos.close();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, err.getMessage());
+        }
+    }
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {

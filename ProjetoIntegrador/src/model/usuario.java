@@ -6,8 +6,6 @@ public class usuario {
     public String email;
     public String nivel;
     public String CPF;
-    
-    
 
     public String getCPF() {
         return CPF;

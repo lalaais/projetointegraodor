@@ -46,32 +46,29 @@ public class UsuarioDao extends ConectarDao {
     }
     
      public ResultSet buscartodos() {
-    sql = "SELECT * FROM USUARIO ORDER BY nome " ;
-    try {
-    ps = mycon.prepareStatement (sql);
-    return ps.executeQuery();
-    } catch (SQLException err) {
-    JOptionPane.showMessageDialog (null, "Erro ao Buscar usuário!" +
-    err.getMessage());
-    return null;
+        sql = "SELECT * FROM USUARIO ORDER BY nome " ;
+        try {
+            ps = mycon.prepareStatement (sql);
+            return ps.executeQuery();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog (null, "Erro ao Buscar usuário!" +
+            err.getMessage());
+            return null;
+        }
     }
-    }
-     
      
     public void excluir ( String usuario ) {
-    // configura o comando sql de exclusão delete por cpf
-     sql = "DELETE FROM USUARIO WHERE nome = '" + usuario + "'";
-    try { // envia o comando sql para dentro da conexão através de
-    
-    ps = mycon.prepareStatement (sql);
-    // executa o comando delete dentro do mysql
-    ps.execute();
-    ps.close(); // fecha o objeto usado para executar o comando sql
-    JOptionPane.showMessageDialog (null,"Registro Excluido com Sucesso!");
-    } catch (SQLException err) {
-    JOptionPane.showMessageDialog (null, "Erro ao Excluir usuário!" +
-    err.getMessage());
-    }}
+        sql = "DELETE FROM USUARIO WHERE nome = '" + usuario + "'";
+        try {
+            ps = mycon.prepareStatement (sql);
+            ps.execute();
+            ps.close(); 
+            JOptionPane.showMessageDialog (null,"Registro Excluido com Sucesso!");
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog (null, "Erro ao Excluir usuário!" +
+            err.getMessage());
+        }
+    }
 
 }
 

@@ -15,7 +15,6 @@ public class FornecedorDao extends ConectarDao{
         super();
     }
 
-
 public void incluir(fornecedor obj) { 
         sql = "INSERT INTO FORNECEDOR VALUE ( ?, ?, ?, ?)";
         try {

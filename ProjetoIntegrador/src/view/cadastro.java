@@ -319,10 +319,7 @@ public class cadastro extends javax.swing.JFrame {
         
         UsuarioDao ud = new UsuarioDao();
         ud.incluir(Gu);
-        
-        
-        
-        
+       
     }//GEN-LAST:event_btnIncluirMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -339,7 +336,7 @@ public class cadastro extends javax.swing.JFrame {
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
         // TODO add your handling code here:
-        CadastroFornecedor cadFornecedor = new CadastroFornecedor();
+        fornecedorCadastro cadFornecedor = new fornecedorCadastro();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked
@@ -389,11 +386,9 @@ public class cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textEmailActionPerformed
 
-    
-    
     private void carregar_usuarios (){
     UsuarioDao u1 = new UsuarioDao();
-    // apagar todas as linhas do Jtable
+    
     while (tableUsuario.getModel().getRowCount() > 0) {
     ( (DefaultTableModel) tableUsuario.getModel() ).removeRow(0);
     }
@@ -410,9 +405,6 @@ public class cadastro extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, err.getMessage());
     }
     }
-    
-    
-    
     
     public static void main(String args[]) {
        

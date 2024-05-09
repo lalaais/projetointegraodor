@@ -1,6 +1,5 @@
 package model;
 
-
 public class produto {
     public String nome;
     public String descricao;

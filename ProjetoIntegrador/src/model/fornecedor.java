@@ -13,8 +13,7 @@ public class fornecedor {
     public void setIdFornecedor(int idFornecedor) {
         this.idFornecedor = idFornecedor;
     }
-    
-    
+   
     public String getNome() {
         return nome;
     }
