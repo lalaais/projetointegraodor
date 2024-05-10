@@ -4,7 +4,7 @@ public class produto {
     public String nome;
     public String descricao;
     public String categoria;
-    public double preco;
+    public String preco;
     
     public String getNome() {
         return nome;
@@ -30,11 +30,11 @@ public class produto {
         this.categoria = categoria;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
     }
     

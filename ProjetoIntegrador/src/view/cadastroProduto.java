@@ -10,11 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLEditorKit;
 
 public class cadastroProduto extends javax.swing.JFrame {
-    
     public cadastroProduto() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -282,7 +281,7 @@ public class cadastroProduto extends javax.swing.JFrame {
         
         DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCategoria.getModel();
         DefaultTableModel MdlTableProduto = (DefaultTableModel) tableProduto.getModel();
-        Object [] linhas = { this.nomeProduto.getText(), this.descricaoProduto.getText(),  this.precoProduto.getValue().toString()};
+        Object [] linhas = { this.nomeProduto.getText(), this.descricaoProduto.getText(),  combo.getSelectedItem().toString(), this.precoProduto.getValue()};
         MdlTableProduto.addRow(linhas);
         
         produto Pro = new produto ();
@@ -290,7 +289,7 @@ public class cadastroProduto extends javax.swing.JFrame {
         Pro.setNome(this.nomeProduto.getText());
         Pro.setDescricao(this.descricaoProduto.getText());
         Pro.setCategoria(this.cmbCategoria.getSelectedItem().toString());
-        Pro.setPreco(this.precoProduto.getHeight());
+        Pro.setPreco((String) this.precoProduto.getValue());
        
         ProdutoDao pd = new ProdutoDao();
         pd.cadastrar(Pro);
@@ -318,7 +317,7 @@ public class cadastroProduto extends javax.swing.JFrame {
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
         // TODO add your handling code here:
-        fornecedorCadastro cadFornecedor = new fornecedorCadastro();
+        CadastroFornece cadFornecedor = new CadastroFornece();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked

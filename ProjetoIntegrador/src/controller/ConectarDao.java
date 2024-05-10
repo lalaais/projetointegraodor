@@ -79,8 +79,8 @@ public class ConectarDao {
                 + "ID_USUARIO      int primary key auto_increment,"
                 + "NOME            varchar(300),"
                 + "DESCRICAO       varchar(300),"
-                + "PRECO           varchar(300),"
-                + "CATEGORIA       varchar(300))";
+                + "CATEGORIA       varchar(300),"
+                + "PRECO           varchar(300))";
 
         try {
             ps = mycon.prepareStatement(sql);
