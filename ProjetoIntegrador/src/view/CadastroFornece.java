@@ -1,5 +1,5 @@
 package view;
-
+//teste
 import controller.FornecedorDao;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;

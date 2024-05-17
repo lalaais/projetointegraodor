@@ -42,3 +42,5 @@ create table ITEM(
     foreign key (ID_produto) references PRODUTO(ID_produto),
     foreign key (preco) references USUARIO(preco)
 );
+
+//teste

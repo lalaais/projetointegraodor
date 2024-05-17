@@ -1,5 +1,5 @@
 package view;
-
+//teste
 public class orçamento extends javax.swing.JFrame {
 
     public orçamento() {
