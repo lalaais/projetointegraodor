@@ -221,11 +221,12 @@ public class CadastroFornece extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void numeroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFornecedorActionPerformed
@@ -244,7 +245,8 @@ public class CadastroFornece extends javax.swing.JFrame {
         // TODO add your handling code here:
        DefaultTableModel MdlTableFornecedor  = (DefaultTableModel) tableFornecedor.getModel();
         DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCategoria.getModel();
-        Object [] linhas = {nomeFornecedor.getText() , this.numeroFornecedor.getText(), combo.getSelectedItem().toString()};
+
+        Object [] linhas = {nomeFornecedor.getText() , this.numeroFornecedor.getText(), combo.getSelectedItem().toString(), };
         MdlTableFornecedor.addRow(linhas);
         fornecedor forne = new fornecedor();
         forne.setNome(this.nomeFornecedor.getText());
@@ -260,9 +262,24 @@ public class CadastroFornece extends javax.swing.JFrame {
                  
                  meucombo.removeAllElements();
                  
-                 meucombo.addElement("Direção");
+                  meucombo.addElement("Direção");
                  meucombo.addElement("Elétrica");
                  meucombo.addElement("Suspensão");
+                 meucombo.addElement("Tranmissão");
+                 meucombo.addElement("Sistema de Combustível");
+                 meucombo.addElement("Freios");
+                 meucombo.addElement("Climatização");
+                 meucombo.addElement("Pneus");
+                 meucombo.addElement("Escapamento");
+                 meucombo.addElement("Catalisador");
+                 meucombo.addElement("Som e Multimídia");
+                 meucombo.addElement("Rodas e Calotas");
+                 meucombo.addElement("Latarias");
+                 meucombo.addElement("Exterior do Carro");
+                 meucombo.addElement("Alarmes e Segurança");
+                 meucombo.addElement("Estética Automotiva");
+                 meucombo.addElement("Interior do Carro");
+                 meucombo.addElement("Ferramentas");
     }//GEN-LAST:event_formWindowOpened
 
     private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked

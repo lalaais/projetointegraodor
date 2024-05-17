@@ -1,20 +1,12 @@
 package model;
 
 public class usuario {
-    public String nome;
-    public String senha;
-    public String email;
-    public String nivel;
-    public String CPF;
+    private String nome;
+    private String senha;
+    private String email;
+    private String CPF;
+    private int id_nivel;
 
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-    
     public String getNome() {
         return nome;
     }
@@ -39,12 +31,20 @@ public class usuario {
         this.email = email;
     }
 
-    public String getNivel() {
-        return nivel;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
-   
+
+    public int getId_nivel() {
+        return id_nivel;
+    }
+
+    public void setId_nivel(int id_nivel) {
+        this.id_nivel = id_nivel;
+    }
+
 }

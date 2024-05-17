@@ -286,24 +286,47 @@ public class cadastro extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void carregar_usuarios (){
+    UsuarioDao u1 = new UsuarioDao();
+    
+    while (tableUsuario.getModel().getRowCount() > 0) {
+    ( (DefaultTableModel) tableUsuario.getModel() ).removeRow(0);
+    }
+    
+    
+    try {
+    ResultSet todos = u1.buscartodos();
+    DefaultTableModel tab = (DefaultTableModel) this.tableUsuario.getModel();
+    
+    while ( todos.next() ) {
+    Object[] linha = {todos.getString("nome"), todos.getString("id_nivel")};
+    tab.addRow(linha);
+    }
+    todos.close();
+    } catch (SQLException err) {
+    JOptionPane.showMessageDialog(null, err.getMessage());
+    }
+    }
+
+
+
+
     private void textLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textLoginActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_textLoginActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void cmbNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cmbNivelActionPerformed
 
     private void btnIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIncluirMouseClicked
-
-        // TODO add your handling code here:
         DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbNivel.getModel();
         DefaultTableModel MdlTableUsuario = (DefaultTableModel) this.tableUsuario.getModel();
         Object [] linhas = { textCPF.getText(),textLogin.getText(), combo.getSelectedItem().toString(), textSenha.getText(), textEmail.getText()};
@@ -313,7 +336,7 @@ public class cadastro extends javax.swing.JFrame {
         
         Gu.setCPF(this.textCPF.getText());
         Gu.setNome(this.textLogin.getText());
-        Gu.setNivel(this.cmbNivel.getSelectedItem().toString());
+        Gu.setId_nivel(this.cmbNivel.getSelectedIndex());
         Gu.setSenha (this.textSenha.getText());
         Gu.setEmail(this.textEmail.getText());
         
@@ -323,19 +346,17 @@ public class cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIncluirMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
                  DefaultComboBoxModel meucombo = (DefaultComboBoxModel)  this.cmbNivel.getModel();
                  meucombo.removeAllElements();
-                 meucombo.addElement("Gerente");
                  meucombo.addElement("Funcionário");
+                 meucombo.addElement("Cliente");
                  
                  this.carregar_usuarios(); 
           
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
-        // TODO add your handling code here:
         CadastroFornece cadFornecedor = new CadastroFornece();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
@@ -386,25 +407,6 @@ public class cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textEmailActionPerformed
 
-    private void carregar_usuarios (){
-    UsuarioDao u1 = new UsuarioDao();
-    
-    while (tableUsuario.getModel().getRowCount() > 0) {
-    ( (DefaultTableModel) tableUsuario.getModel() ).removeRow(0);
-    }
-    try {
-    ResultSet todos = u1.buscartodos();
-    DefaultTableModel tab = (DefaultTableModel) this.tableUsuario.getModel();
-    while (todos.next()) {
-    Object[] linha = {todos.getString("usuario"), todos.getString("função")};
-    
-    tab.addRow(linha);
-    }
-    todos.close();
-    } catch (SQLException err) {
-    JOptionPane.showMessageDialog(null, err.getMessage());
-    }
-    }
     
     public static void main(String args[]) {
        

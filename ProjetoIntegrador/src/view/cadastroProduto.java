@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import model.produto;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.html.HTMLEditorKit;
 
@@ -129,6 +131,11 @@ public class cadastroProduto extends javax.swing.JFrame {
                 "Nome", "Descrição", "Categoria", "Preço"
             }
         ));
+        tableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableProduto);
 
         btnBuscar.setText("Buscar");
@@ -171,14 +178,14 @@ public class cadastroProduto extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(descricaoProduto)
                     .addComponent(nomeProduto)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -254,34 +261,37 @@ public class cadastroProduto extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_cmbCategoriaActionPerformed
 
     private void descricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoProdutoActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_descricaoProdutoActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void nomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeProdutoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_nomeProdutoActionPerformed
 
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
-        // TODO add your handling code here:
-        
+
         DefaultComboBoxModel combo = (DefaultComboBoxModel) this.cmbCategoria.getModel();
         DefaultTableModel MdlTableProduto = (DefaultTableModel) tableProduto.getModel();
-        Object [] linhas = { this.nomeProduto.getText(), this.descricaoProduto.getText(),  combo.getSelectedItem().toString(), this.precoProduto.getValue()};
+        SpinnerModel model = (SpinnerNumberModel) this.precoProduto.getModel();
+        Object [] linhas = { this.nomeProduto.getText(), this.descricaoProduto.getText(),combo.getSelectedItem().toString(),this.precoProduto.getValue()};
         MdlTableProduto.addRow(linhas);
         
         produto Pro = new produto ();
@@ -289,7 +299,7 @@ public class cadastroProduto extends javax.swing.JFrame {
         Pro.setNome(this.nomeProduto.getText());
         Pro.setDescricao(this.descricaoProduto.getText());
         Pro.setCategoria(this.cmbCategoria.getSelectedItem().toString());
-        Pro.setPreco((String) this.precoProduto.getValue());
+        Pro.setPreco (this.precoProduto.getModel().toString());
        
         ProdutoDao pd = new ProdutoDao();
         pd.cadastrar(Pro);
@@ -300,53 +310,67 @@ public class cadastroProduto extends javax.swing.JFrame {
                  DefaultComboBoxModel meucombo = (DefaultComboBoxModel)  this.cmbCategoria.getModel();
                  
                  meucombo.removeAllElements();
-                 
+    
                  meucombo.addElement("Direção");
                  meucombo.addElement("Elétrica");
                  meucombo.addElement("Suspensão");
+                 meucombo.addElement("Tranmissão");
+                 meucombo.addElement("Sistema de Combustível");
+                 meucombo.addElement("Freios");
+                 meucombo.addElement("Climatização");
+                 meucombo.addElement("Pneus");
+                 meucombo.addElement("Escapamento");
+                 meucombo.addElement("Catalisador");
+                 meucombo.addElement("Som e Multimídia");
+                 meucombo.addElement("Rodas e Calotas");
+                 meucombo.addElement("Latarias");
+                 meucombo.addElement("Exterior do Carro");
+                 meucombo.addElement("Alarmes e Segurança");
+                 meucombo.addElement("Estética Automotiva");
+                 meucombo.addElement("Interior do Carro");
+                 meucombo.addElement("Ferramentas");
                  
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     private void menuUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUsuarioMouseClicked
-        // TODO add your handling code here:
         cadastro cadUsuario = new cadastro();
         cadUsuario.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuUsuarioMouseClicked
 
     private void menuFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuFornecedorMouseClicked
-        // TODO add your handling code here:
         CadastroFornece cadFornecedor = new CadastroFornece();
         cadFornecedor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuFornecedorMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
-        // TODO add your handling code here:
         ProdutoDao p = new ProdutoDao();
         p.excluir (nomeProduto.getText());
         this.cadastrar_produtos();
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
-        // TODO add your handling code here:
         login menuSair = new login();
         menuSair.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuSairMouseClicked
+
+    private void tableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProdutoMouseClicked
+  
+    }//GEN-LAST:event_tableProdutoMouseClicked
 
     private void cadastrar_produtos() {
         ProdutoDao ps = new ProdutoDao();
@@ -357,7 +381,7 @@ public class cadastroProduto extends javax.swing.JFrame {
             ResultSet todos = ps.buscartodos();
             DefaultTableModel tab = (DefaultTableModel) this.tableProduto.getModel();
             while (todos.next()) {
-                Object[] linha = {todos.getString("cpf"), todos.getString("nome"), todos.getString("nivel")};
+                Object[] linha = {todos.getString("nome"), todos.getString("descricao"), todos.getString("categoria"), todos.getString("preco")};
                 
                 tab.addRow(linha);
             }
@@ -398,4 +422,8 @@ public class cadastroProduto extends javax.swing.JFrame {
     private javax.swing.JSpinner precoProduto;
     private javax.swing.JTable tableProduto;
     // End of variables declaration//GEN-END:variables
+
+    private SpinnerModel SpinnerNumberModel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

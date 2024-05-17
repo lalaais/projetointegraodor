@@ -22,7 +22,7 @@ public class UsuarioDao extends ConectarDao {
             ps.setString(2,obj.getNome());
             ps.setString(3,obj.getSenha());
             ps.setString(4,obj.getEmail());
-            ps.setString(5,obj.getNivel());
+            ps.setInt(5,obj.getId_nivel());
             ps.execute();
             ps.close();
             JOptionPane.showMessageDialog(null,"Registro Incluído com Sucesso!");
@@ -46,7 +46,7 @@ public class UsuarioDao extends ConectarDao {
     }
     
      public ResultSet buscartodos() {
-        sql = "SELECT * FROM USUARIO ORDER BY nome " ;
+        sql = "SELECT * FROM USUARIO, NIVEl where nivel.id_nivel = usuario.id_nivel ORDER BY nome " ;
         try {
             ps = mycon.prepareStatement (sql);
             return ps.executeQuery();

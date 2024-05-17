@@ -48,11 +48,11 @@ public class ConectarDao {
         }
 
         sql = "CREATE TABLE IF NOT EXISTS USUARIO ("
-                + "ID_CPF         varchar(14) primary key,"
+                + "CPF         varchar(14) primary key,"
                 + "NOME           varchar(300),"
                 + "SENHA          varchar(300),"
                 + "EMAIL          varchar(300),"
-                + "TELEFONE       varchar(14))";
+                + "ID_NIVEL  int not null )";
 
         try {
             ps = mycon.prepareStatement(sql);
@@ -76,8 +76,7 @@ public class ConectarDao {
         }
 
         sql = "CREATE TABLE IF NOT EXISTS PRODUTO ("
-                + "ID_USUARIO      int primary key auto_increment,"
-                + "NOME            varchar(300),"
+                + "NOME            varchar(300) primary key ,"
                 + "DESCRICAO       varchar(300),"
                 + "CATEGORIA       varchar(300),"
                 + "PRECO           varchar(300))";
